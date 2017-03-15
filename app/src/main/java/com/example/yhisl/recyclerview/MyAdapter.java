@@ -14,16 +14,19 @@ import java.util.List;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
+    //variables
     private List<String> names;
     private int layout;
     private OnItemClickListener itemClickListener;
 
+    //constructor de la clase
     public MyAdapter (List<String> names, int layout, OnItemClickListener itemClickListener){
         this.names = names;
         this.layout = layout;
         this.itemClickListener = itemClickListener;
     }
 
+    //se crea el viewholder
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         //se infla la vista
@@ -33,19 +36,23 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         return vh;
     }
 
+    //se volva el dato del textview, este metodo solo es llamado cuando se crea el recyclerView y cuadno se agregan nuevos elementos
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         holder.bind(names.get(position), itemClickListener);
     }
 
+    //numero de items
     @Override
     public int getItemCount() {
         return names.size();
     }
 
+    //clase de la que extiende el recyclerview.adapter
     public static class ViewHolder extends RecyclerView.ViewHolder{
         public TextView textViewname;
 
+        //constructor de la clase viewholder
         public ViewHolder(View itemView){
             super(itemView);
             this.textViewname=(TextView) itemView.findViewById(R.id.textViewName);
@@ -55,6 +62,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         public void bind(final String name, final OnItemClickListener listener){
             this.textViewname.setText(name);
 
+            //el itemView sale del parametro de la clase viewholder declarada mas arriba
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -64,6 +72,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         }
     }
 
+    //evento click que hay que crear para los recyclerview
     public interface OnItemClickListener{
         void onItemClick(String name, int position);
     }

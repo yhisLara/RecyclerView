@@ -12,8 +12,10 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+    //lista de nombres
     private List<String> names;
 
+    //se declara el recyclerView y lo que necesitamos ( adaptador y layoutManager)
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
@@ -27,9 +29,13 @@ public class MainActivity extends AppCompatActivity {
         //relleno de la lista con los nombres
         names = this.getAllNames();
 
+        //variable del layout
         mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+
+        //muestra elementos en una lista vertical u horizontal
         mLayoutManager = new LinearLayoutManager(this);
 
+        //aqui se instancia el adaptador, llamado a la clase, se llama al onItemClickListener que hemos creado en el adaptador
         mAdapter = new MyAdapter(names, R.layout.recycler_view_item, new MyAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(String name, int position) {
@@ -40,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
         mRecyclerView.setAdapter(mAdapter);
     }
 
+    //metodo que devuelve una lista de nombres
     private List<String> getAllNames(){
         return new ArrayList<String>(){{
             add("Yhis");
