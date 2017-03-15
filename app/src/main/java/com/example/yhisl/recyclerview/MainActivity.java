@@ -3,8 +3,10 @@ package com.example.yhisl.recyclerview;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -39,6 +41,10 @@ public class MainActivity extends AppCompatActivity {
 
         //muestra elementos en una lista vertical u horizontal
         mLayoutManager = new LinearLayoutManager(this);
+        //gridView
+        mLayoutManager = new GridLayoutManager(this,2);
+        //renderiza todo del mismo tamaño
+        mLayoutManager =  new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
 
         //aqui se instancia el adaptador, llamado a la clase, se llama al onItemClickListener que hemos creado en el adaptador
         mAdapter = new MyAdapter(names, R.layout.recycler_view_item, new MyAdapter.OnItemClickListener() {
