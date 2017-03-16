@@ -70,6 +70,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         public void bind(final Movie movies, final OnItemClickListener listener){
             //procesar datos o renderizar
             textViewname.setText(movies.getName());
+            //cambia tamaño de las imagenes para que ocupe el tamaño completo
             Picasso.with(context).load(movies.getPoster()).fit().into(imageViewPoster);
             imageViewPoster.setImageResource(movies.getPoster());
 
