@@ -1,4 +1,4 @@
-package com.example.yhisl.recyclerview;
+package com.example.yhisl.recyclerview.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,8 +9,10 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.TextView;
-import android.widget.Toast;
+
+import com.example.yhisl.recyclerview.R;
+import com.example.yhisl.recyclerview.adapter.MyAdapter;
+import com.example.yhisl.recyclerview.models.Movie;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(Movie movies, int position) {
                // Toast.makeText(MainActivity.this, name + " - " + position,Toast.LENGTH_LONG).show();
-                //deleteMovie(position);
+                deleteMovie(position);
             }
         });
 
@@ -75,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case R.id.add_name:
-               // this.addMovie(0);
+               this.addMovie(0);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -94,8 +96,9 @@ public class MainActivity extends AppCompatActivity {
         }};
     }
 
-   /* //funciòn añadir
+   //funciòn añadir
     public void addMovie(int position){
+        movies.add(position,new Movie("New Movie nº "+(++counter),R.drawable.form));
         mAdapter.notifyItemInserted(position);
         mLayoutManager.scrollToPosition(position);
 
@@ -105,5 +108,5 @@ public class MainActivity extends AppCompatActivity {
     public void deleteMovie(int position){
         movies.remove(position);
         mAdapter.notifyItemRemoved(position);
-    }*/
+    }
 }

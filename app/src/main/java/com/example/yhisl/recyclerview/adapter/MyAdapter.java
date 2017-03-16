@@ -1,4 +1,4 @@
-package com.example.yhisl.recyclerview;
+package com.example.yhisl.recyclerview.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.yhisl.recyclerview.models.Movie;
+import com.example.yhisl.recyclerview.R;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;

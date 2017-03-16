@@ -1,4 +1,4 @@
-package com.example.yhisl.recyclerview;
+package com.example.yhisl.recyclerview.models;
 
 /**
  * Created by yhisl on 16/03/2017.
