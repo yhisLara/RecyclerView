@@ -18,7 +18,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     //lista de nombres
-    private List<String> names;
+    private List<Movie> movies;
 
     //se declara el recyclerView y lo que necesitamos ( adaptador y layoutManager)
     private RecyclerView mRecyclerView;
@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //relleno de la lista con los nombres
-        names = this.getAllNames();
+        movies = this.getAllMovies();
 
         //variable del layout
         mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
@@ -47,11 +47,11 @@ public class MainActivity extends AppCompatActivity {
         mLayoutManager =  new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
 
         //aqui se instancia el adaptador, llamado a la clase, se llama al onItemClickListener que hemos creado en el adaptador
-        mAdapter = new MyAdapter(names, R.layout.recycler_view_item, new MyAdapter.OnItemClickListener() {
+        mAdapter = new MyAdapter(movies, R.layout.recycler_view_item, new MyAdapter.OnItemClickListener() {
             @Override
-            public void onItemClick(String name, int position) {
+            public void onItemClick(Movie movies, int position) {
                // Toast.makeText(MainActivity.this, name + " - " + position,Toast.LENGTH_LONG).show();
-                deleteName(position);
+                //deleteMovie(position);
             }
         });
 
@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case R.id.add_name:
-                this.addname(0);
+               // this.addMovie(0);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -84,27 +84,26 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //metodo que devuelve una lista de nombres
-    private List<String> getAllNames(){
-        return new ArrayList<String>(){{
-            add("Yhis");
-            add("criis");
-            add("simo");
-            add("nano");
-            add("vero");
+    private List<Movie> getAllMovies(){
+        return new ArrayList<Movie>(){{
+            add(new Movie("Big Hero 6",R.drawable.bighero));
+            add(new Movie("La Lista de Schindler",R.drawable.lista));
+            add(new Movie("Monster Inc",R.drawable.monsterinc));
+            add(new Movie("Wall-e",R.drawable.walle));
+
         }};
     }
 
-    //funciòn añadir
-    public void addname(int position){
-        names.add(position,"New Name "+(++counter));
+   /* //funciòn añadir
+    public void addMovie(int position){
         mAdapter.notifyItemInserted(position);
         mLayoutManager.scrollToPosition(position);
 
     }
 
     //funciòn eliminar
-    public void deleteName(int position){
-        names.remove(position);
+    public void deleteMovie(int position){
+        movies.remove(position);
         mAdapter.notifyItemRemoved(position);
-    }
+    }*/
 }
